@@ -1,0 +1,5 @@
+.igr-test{ background:#fff; border-radius:16px; padding:1.5rem; box-shadow:0 10px 30px rgba(0,0,0,.06); }
+.igr-test__h2{ margin:0 0 .5rem; font-size:2rem; }
+.igr-test__p{ margin:0 0 1rem; font-size:1.1rem; opacity:.85; }
+.igr-test__btn{ display:inline-block; padding:.75rem 1rem; border-radius:12px; text-decoration:none; border:1px solid #122975; }
+.igr-test__btn:hover{ background:#122975; color:#fff; }
