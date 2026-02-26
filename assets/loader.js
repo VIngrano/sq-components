@@ -1,6 +1,6 @@
 (() => {
   // ✅ Ersetze USERNAME/REPO
-  const RAW_BASE = "https://raw.githubusercontent.com/USERNAME/REPO/main/components/";
+  const RAW_BASE = "https://raw.githubusercontent.com/Vlngrano/sq-components/main/components/";
 
   async function loadComponent(el) {
     const name = el.getAttribute("data-component");
