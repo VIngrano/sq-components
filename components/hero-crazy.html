@@ -8,19 +8,21 @@
 
   <div class="igr-crazy__wrap">
     <div class="igr-crazy__card">
+      <div class="igr-crazy__glow" aria-hidden="true"></div>
+
       <div class="igr-crazy__badge">
         <span class="igr-dot"></span>
-        Live Components from GitHub
+        Showcase Mode · Live from GitHub
       </div>
 
       <h1 class="igr-crazy__h1">
         Patienteninfo<span class="igr-crazy__spark">360°</span><br />
-        <span class="igr-crazy__grad">but make it cinematic.</span>
+        <span class="igr-crazy__grad">now with ridiculous motion.</span>
       </h1>
 
       <p class="igr-crazy__p">
-        Diese Section wird dynamisch aus GitHub geladen. Wenn Animationen & Styles laufen, ist dein Setup
-        “production-ready” für modularen Content.
+        Wenn du jetzt kaum Animation siehst, dann stimmt wirklich irgendwas mit CSS/Rendering nicht.
+        Hier ist alles bewusst „over the top“.
       </p>
 
       <div class="igr-crazy__cta">
@@ -28,30 +30,27 @@
           <span class="igr-btn__shine" aria-hidden="true"></span>
           Demo starten
         </a>
-        <a class="igr-btn igr-btn--ghost" href="#">
-          Mehr erfahren
-        </a>
+        <a class="igr-btn igr-btn--ghost" href="#">Mehr erfahren</a>
       </div>
 
       <div class="igr-crazy__stats">
         <div class="igr-stat">
-          <div class="igr-stat__k">Null</div>
-          <div class="igr-stat__l">Squarespace Block-Edits</div>
+          <div class="igr-stat__k">Echtzeit</div>
+          <div class="igr-stat__l">GitHub → Website</div>
         </div>
         <div class="igr-stat">
-          <div class="igr-stat__k">Eins</div>
-          <div class="igr-stat__l">Single Source of Truth</div>
+          <div class="igr-stat__k">Drei</div>
+          <div class="igr-stat__l">Orbs + Grid Motion</div>
         </div>
         <div class="igr-stat">
-          <div class="igr-stat__k">Unendlich</div>
-          <div class="igr-stat__l">Iterations-Speed</div>
+          <div class="igr-stat__k">Mouse</div>
+          <div class="igr-stat__l">Glow + 3D Tilt</div>
         </div>
       </div>
     </div>
   </div>
 
   <style>
-    /* ====== CRAZY HERO (self-contained) ====== */
     .igr-crazy, .igr-crazy * { box-sizing: border-box; }
     .igr-crazy{
       position: relative;
@@ -61,76 +60,72 @@
       background: transparent;
     }
 
-    /* Background: animated gradient film */
+    /* BG film – stronger, more obvious */
     .igr-crazy__bg{
       position:absolute; inset:0;
       z-index:0;
       pointer-events:none;
     }
-
     .igr-crazy__bg::before{
       content:"";
-      position:absolute; inset:-40%;
+      position:absolute; inset:-50%;
       background:
-        radial-gradient(700px 380px at 20% 30%, rgba(18,41,117,.22), transparent 55%),
-        radial-gradient(650px 420px at 80% 35%, rgba(32,178,170,.18), transparent 60%),
-        radial-gradient(520px 380px at 55% 75%, rgba(18,41,117,.14), transparent 58%),
-        conic-gradient(from 180deg at 50% 50%,
-          rgba(18,41,117,.08),
-          rgba(32,178,170,.08),
-          rgba(18,41,117,.08)
+        radial-gradient(820px 520px at 18% 28%, rgba(18,41,117,.32), transparent 60%),
+        radial-gradient(820px 520px at 82% 28%, rgba(32,178,170,.28), transparent 62%),
+        radial-gradient(720px 520px at 55% 82%, rgba(18,41,117,.22), transparent 64%),
+        conic-gradient(from 210deg at 50% 50%,
+          rgba(18,41,117,.14),
+          rgba(32,178,170,.14),
+          rgba(18,41,117,.14)
         );
-      filter: blur(10px);
+      filter: blur(12px) saturate(1.15);
+      animation: igr-film 10s ease-in-out infinite;
+      opacity: 1;
       transform: translate3d(0,0,0);
-      animation: igr-film 18s ease-in-out infinite;
-      opacity:.95;
     }
-
     @keyframes igr-film{
-      0%   { transform: translate(-2%, -1%) scale(1.03) rotate(0deg); }
-      33%  { transform: translate(2%, -2%) scale(1.06) rotate(6deg); }
-      66%  { transform: translate(-1%, 2%) scale(1.05) rotate(-5deg); }
-      100% { transform: translate(-2%, -1%) scale(1.03) rotate(0deg); }
+      0%   { transform: translate(-3%, -2%) scale(1.05) rotate(0deg); }
+      33%  { transform: translate(3%, -3%) scale(1.10) rotate(10deg); }
+      66%  { transform: translate(-2%, 3%) scale(1.09) rotate(-9deg); }
+      100% { transform: translate(-3%, -2%) scale(1.05) rotate(0deg); }
     }
 
-    /* Grid overlay */
+    /* Grid – faster, more visible */
     .igr-crazy__grid{
       position:absolute; inset:0;
       background:
-        linear-gradient(to right, rgba(18,41,117,.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(18,41,117,.08) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.9), transparent 85%);
-      opacity:.45;
-      animation: igr-grid 14s linear infinite;
+        linear-gradient(to right, rgba(18,41,117,.14) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18,41,117,.14) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(closest-side at 50% 45%, rgba(0,0,0,.95), transparent 85%);
+      opacity:.55;
+      animation: igr-grid 6s linear infinite;
     }
     @keyframes igr-grid{
       from{ transform: translateY(0); }
-      to  { transform: translateY(64px); }
+      to  { transform: translateY(56px); }
     }
 
-    /* Floating orbs */
+    /* Orbs – bigger movement */
     .igr-crazy__orb{
       position:absolute;
-      width: clamp(220px, 30vw, 420px);
-      height: clamp(220px, 30vw, 420px);
+      width: clamp(260px, 34vw, 520px);
+      height: clamp(260px, 34vw, 520px);
       border-radius: 999px;
-      filter: blur(18px);
-      opacity: .75;
+      filter: blur(18px) saturate(1.2);
+      opacity: .9;
       mix-blend-mode: screen;
-      animation: igr-orb 10s ease-in-out infinite;
+      animation: igr-orb 6s ease-in-out infinite;
     }
-    .igr-crazy__orb--a{ left:-8%; top:10%; background: rgba(32,178,170,.35); animation-duration: 12s; }
-    .igr-crazy__orb--b{ right:-10%; top:0%; background: rgba(18,41,117,.35); animation-duration: 14s; }
-    .igr-crazy__orb--c{ left:35%; bottom:-15%; background: rgba(32,178,170,.25); animation-duration: 16s; }
-
+    .igr-crazy__orb--a{ left:-10%; top:14%; background: rgba(32,178,170,.45); animation-duration: 7s; }
+    .igr-crazy__orb--b{ right:-12%; top:-4%; background: rgba(18,41,117,.45); animation-duration: 8s; }
+    .igr-crazy__orb--c{ left:32%; bottom:-20%; background: rgba(32,178,170,.35); animation-duration: 9s; }
     @keyframes igr-orb{
       0%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(18px, -14px) scale(1.08); }
+      50%{ transform: translate(42px, -34px) scale(1.12); }
       100%{ transform: translate(0,0) scale(1); }
     }
 
-    /* Content */
     .igr-crazy__wrap{
       position:relative;
       z-index:1;
@@ -140,24 +135,40 @@
       justify-content:center;
     }
 
-    /* Glass card */
+    /* Card: reveal + 3D stage */
     .igr-crazy__card{
       width: 100%;
       padding: clamp(1.5rem, 3vw, 2.4rem);
       border-radius: 22px;
-      background: rgba(255,255,255,.68);
-      border: 1px solid rgba(18,41,117,.12);
-      box-shadow: 0 24px 60px rgba(0,0,0,.10);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transform: translateY(18px);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(18,41,117,.14);
+      box-shadow: 0 28px 70px rgba(0,0,0,.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transform: perspective(900px) translateY(26px) rotateX(6deg);
       opacity: 0;
-      animation: igr-reveal .9s cubic-bezier(.2,.9,.2,1) forwards;
+      animation: igr-reveal 1.05s cubic-bezier(.18,.9,.18,1) forwards;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+    }
+    @keyframes igr-reveal{
+      to { transform: perspective(900px) translateY(0) rotateX(0deg); opacity: 1; }
     }
 
-    @keyframes igr-reveal{
-      to { transform: translateY(0); opacity: 1; }
+    /* Mouse-follow glow layer */
+    .igr-crazy__glow{
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(240px 240px at var(--mx, 50%) var(--my, 50%),
+        rgba(32,178,170,.35),
+        transparent 60%);
+      opacity: .9;
+      pointer-events:none;
+      transition: opacity .2s ease;
+      mix-blend-mode: multiply;
     }
+    .igr-crazy__card:hover .igr-crazy__glow{ opacity: 1; }
 
     .igr-crazy__badge{
       display:inline-flex;
@@ -165,23 +176,22 @@
       gap:.55rem;
       padding:.45rem .75rem;
       border-radius: 999px;
-      background: rgba(18,41,117,.06);
-      border: 1px solid rgba(18,41,117,.10);
+      background: rgba(18,41,117,.07);
+      border: 1px solid rgba(18,41,117,.12);
       font-size: .95rem;
-      opacity: .92;
       width: fit-content;
     }
 
     .igr-dot{
-      width: 9px; height: 9px;
+      width: 10px; height: 10px;
       border-radius: 999px;
       background: rgba(32,178,170,1);
-      box-shadow: 0 0 0 6px rgba(32,178,170,.18);
-      animation: igr-pulse 1.6s ease-in-out infinite;
+      box-shadow: 0 0 0 8px rgba(32,178,170,.18);
+      animation: igr-pulse 1.2s ease-in-out infinite;
     }
     @keyframes igr-pulse{
-      0%,100%{ transform: scale(1); box-shadow: 0 0 0 6px rgba(32,178,170,.18); }
-      50%{ transform: scale(1.08); box-shadow: 0 0 0 10px rgba(32,178,170,.12); }
+      0%,100%{ transform: scale(1); box-shadow: 0 0 0 8px rgba(32,178,170,.18); }
+      50%{ transform: scale(1.12); box-shadow: 0 0 0 14px rgba(32,178,170,.12); }
     }
 
     .igr-crazy__h1{
@@ -197,17 +207,17 @@
       transform: translateY(-2px);
       padding: 0 .18em;
       border-radius: .35em;
-      background: rgba(32,178,170,.12);
-      border: 1px solid rgba(32,178,170,.22);
+      background: rgba(32,178,170,.14);
+      border: 1px solid rgba(32,178,170,.25);
     }
 
     .igr-crazy__grad{
       background: linear-gradient(90deg, #122975, #20b2aa, #122975);
-      background-size: 220% 100%;
+      background-size: 240% 100%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: igr-grad 3.6s ease-in-out infinite;
+      animation: igr-grad 2.0s ease-in-out infinite;
     }
     @keyframes igr-grad{
       0%{ background-position: 0% 50%; }
@@ -219,8 +229,8 @@
       margin: 0 0 1.35rem;
       font-size: clamp(1.05rem, 1.6vw, 1.2rem);
       line-height: 1.55;
-      color: rgba(15,27,63,.78);
-      max-width: 58ch;
+      color: rgba(15,27,63,.80);
+      max-width: 60ch;
     }
 
     .igr-crazy__cta{
@@ -236,51 +246,50 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:.5rem;
-      padding: .85rem 1.05rem;
+      padding: .9rem 1.1rem;
       border-radius: 14px;
       text-decoration:none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.05rem;
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
-      will-change: transform;
       overflow:hidden;
+      will-change: transform;
     }
 
     .igr-btn--primary{
       color: #fff;
       background: #122975;
-      box-shadow: 0 18px 35px rgba(18,41,117,.22);
+      box-shadow: 0 20px 44px rgba(18,41,117,.26);
       border: 1px solid rgba(18,41,117,.10);
     }
     .igr-btn--primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 22px 45px rgba(18,41,117,.28);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 26px 60px rgba(18,41,117,.32);
     }
 
     .igr-btn__shine{
       position:absolute;
       inset:-30% -60%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-      transform: rotate(12deg) translateX(-30%);
-      animation: igr-shine 2.6s ease-in-out infinite;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+      transform: rotate(12deg) translateX(-35%);
+      animation: igr-shine 1.8s ease-in-out infinite;
       pointer-events:none;
     }
     @keyframes igr-shine{
-      0%{ transform: rotate(12deg) translateX(-40%); opacity:.0; }
-      25%{ opacity:.9; }
-      50%{ transform: rotate(12deg) translateX(55%); opacity:.0; }
+      0%{ transform: rotate(12deg) translateX(-45%); opacity:.0; }
+      20%{ opacity:1; }
+      45%{ transform: rotate(12deg) translateX(70%); opacity:.0; }
       100%{ opacity:.0; }
     }
 
     .igr-btn--ghost{
       color: #122975;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(18,41,117,.22);
+      background: rgba(255,255,255,.60);
+      border: 1px solid rgba(18,41,117,.24);
     }
     .igr-btn--ghost:hover{
-      transform: translateY(-2px);
-      background: rgba(18,41,117,.06);
+      transform: translateY(-3px);
+      background: rgba(18,41,117,.08);
     }
 
     .igr-crazy__stats{
@@ -292,33 +301,27 @@
     .igr-stat{
       padding: 1rem;
       border-radius: 16px;
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(18,41,117,.10);
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      transform: translateY(10px);
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(18,41,117,.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+      transform: translateY(18px);
       opacity: 0;
-      animation: igr-rise .7s cubic-bezier(.2,.9,.2,1) forwards;
+      animation: igr-rise .8s cubic-bezier(.18,.9,.18,1) forwards;
     }
-    .igr-stat:nth-child(1){ animation-delay: .15s; }
-    .igr-stat:nth-child(2){ animation-delay: .25s; }
-    .igr-stat:nth-child(3){ animation-delay: .35s; }
-
+    .igr-stat:nth-child(1){ animation-delay: .18s; }
+    .igr-stat:nth-child(2){ animation-delay: .30s; }
+    .igr-stat:nth-child(3){ animation-delay: .42s; }
     @keyframes igr-rise{
       to { transform: translateY(0); opacity: 1; }
     }
 
-    .igr-stat__k{
-      font-size: 1.15rem;
-      font-weight: 700;
-      color:#0f1b3f;
-      margin-bottom: .2rem;
-    }
-    .igr-stat__l{
-      font-size: .98rem;
-      color: rgba(15,27,63,.72);
+    .igr-stat__k{ font-size: 1.15rem; font-weight: 800; color:#0f1b3f; margin-bottom: .2rem; }
+    .igr-stat__l{ font-size: .98rem; color: rgba(15,27,63,.74); }
+
+    @media (max-width: 800px){
+      .igr-crazy__stats{ grid-template-columns: 1fr; }
     }
 
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       .igr-crazy__bg::before,
       .igr-crazy__grid,
@@ -332,4 +335,38 @@
       }
     }
   </style>
+
+  <script>
+    (function(){
+      const root = document.currentScript && document.currentScript.closest("[data-igr-crazy]");
+      if(!root) return;
+
+      const card = root.querySelector(".igr-crazy__card");
+      if(!card) return;
+
+      // Mouse-follow glow + 3D tilt (obvious)
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+      function onMove(e){
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+
+        card.style.setProperty("--mx", (x*100).toFixed(2) + "%");
+        card.style.setProperty("--my", (y*100).toFixed(2) + "%");
+
+        const rx = clamp((0.5 - y) * 10, -10, 10);
+        const ry = clamp((x - 0.5) * 12, -12, 12);
+
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+      }
+
+      function onLeave(){
+        card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      }
+
+      card.addEventListener("mousemove", onMove);
+      card.addEventListener("mouseleave", onLeave);
+    })();
+  </script>
 </section>
