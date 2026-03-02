@@ -1,0 +1,269 @@
+<section class="igr-showcase" data-igr-showcase>
+  <div class="igr-showcase__parallax" aria-hidden="true">
+    <div class="igr-showcase__parallaxInner"></div>
+  </div>
+
+  <div class="igr-showcase__wrap">
+    <header class="igr-showcase__head igr-reveal">
+      <div class="igr-showcase__badge">
+        <span class="igr-dot"></span>
+        Combo Test · Scroll + Parallax + Accordion
+      </div>
+      <h2 class="igr-showcase__h2">This is the “works in production” test.</h2>
+      <p class="igr-showcase__p">
+        Scroll runter: Cards revealen nacheinander, Background parallaxed, FAQ öffnet smooth.
+      </p>
+      <div class="igr-progress" aria-hidden="true">
+        <div class="igr-progress__bar"></div>
+      </div>
+    </header>
+
+    <div class="igr-showcase__grid">
+      <article class="igr-card igr-reveal">
+        <h3>Scroll Reveal</h3>
+        <p>IntersectionObserver triggert Animation, sobald sichtbar.</p>
+      </article>
+      <article class="igr-card igr-reveal">
+        <h3>Parallax</h3>
+        <p>Background verschiebt sich abhängig vom Scroll-Progress.</p>
+      </article>
+      <article class="igr-card igr-reveal">
+        <h3>Accordion</h3>
+        <p>Smooth open/close ohne Layout-jank.</p>
+      </article>
+    </div>
+
+    <div class="igr-faq" data-igr-accordion>
+      <h3 class="igr-faq__h3 igr-reveal">FAQ (smooth + animated)</h3>
+
+      <div class="igr-acc">
+        <button class="igr-acc__btn" type="button" aria-expanded="false">
+          Warum globales JS statt Script in Components?
+          <span class="igr-acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="igr-acc__panel" hidden>
+          <div class="igr-acc__content">
+            Weil Scripts aus <code>innerHTML</code> oft nicht zuverlässig laufen. Global ist stabil und skalierbar.
+          </div>
+        </div>
+      </div>
+
+      <div class="igr-acc">
+        <button class="igr-acc__btn" type="button" aria-expanded="false">
+          Kann ein Agent das später automatisch ändern?
+          <span class="igr-acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="igr-acc__panel" hidden>
+          <div class="igr-acc__content">
+            Ja: Agent editiert GitHub-Komponenten (HTML/CSS), merged, und die Website aktualisiert automatisch.
+          </div>
+        </div>
+      </div>
+
+      <div class="igr-acc">
+        <button class="igr-acc__btn" type="button" aria-expanded="false">
+          Wie mache ich daraus echte Ingrano-Sections?
+          <span class="igr-acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="igr-acc__panel" hidden>
+          <div class="igr-acc__content">
+            Wir ersetzen Text/Struktur durch deine echten Bausteine (Hero, Timeline, Services) und behalten die Runtime.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .igr-showcase, .igr-showcase * { box-sizing: border-box; }
+    .igr-showcase{
+      position:relative;
+      overflow:hidden;
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
+      isolation:isolate;
+    }
+
+    /* Parallax background */
+    .igr-showcase__parallax{
+      position:absolute; inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:.95;
+    }
+    .igr-showcase__parallaxInner{
+      position:absolute; inset:-40%;
+      background:
+        radial-gradient(900px 520px at 18% 30%, rgba(18,41,117,.26), transparent 60%),
+        radial-gradient(900px 560px at 82% 35%, rgba(32,178,170,.22), transparent 62%),
+        conic-gradient(from 210deg at 50% 50%, rgba(18,41,117,.10), rgba(32,178,170,.10), rgba(18,41,117,.10));
+      filter: blur(12px) saturate(1.15);
+      transform: translate3d(0,var(--igr-parallax, 0px),0);
+      transition: transform .08s linear;
+    }
+
+    .igr-showcase__wrap{
+      position:relative;
+      z-index:1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .igr-showcase__head{
+      padding: clamp(1.2rem, 2.6vw, 2rem);
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(18,41,117,.14);
+      box-shadow: 0 24px 60px rgba(0,0,0,.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      margin-bottom: 1.25rem;
+    }
+
+    .igr-showcase__badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      background: rgba(18,41,117,.07);
+      border: 1px solid rgba(18,41,117,.12);
+      font-size:.95rem;
+      width: fit-content;
+    }
+    .igr-dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(32,178,170,1);
+      box-shadow: 0 0 0 10px rgba(32,178,170,.12);
+    }
+
+    .igr-showcase__h2{
+      margin:.8rem 0 .45rem;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing:-0.02em;
+      line-height:1.05;
+      color:#0f1b3f;
+    }
+    .igr-showcase__p{
+      margin:0;
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      line-height:1.55;
+      color: rgba(15,27,63,.80);
+      max-width: 70ch;
+    }
+
+    /* Progress bar */
+    .igr-progress{
+      margin-top: 1rem;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18,41,117,.08);
+      overflow:hidden;
+      border: 1px solid rgba(18,41,117,.10);
+    }
+    .igr-progress__bar{
+      height:100%;
+      width: var(--igr-progress, 0%);
+      background: linear-gradient(90deg, #122975, #20b2aa);
+      transition: width .08s linear;
+    }
+
+    /* Cards */
+    .igr-showcase__grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: .9rem;
+      margin: 1rem 0 1.4rem;
+    }
+    .igr-card{
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(18,41,117,.12);
+      box-shadow: 0 14px 34px rgba(0,0,0,.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .igr-card h3{ margin:0 0 .35rem; color:#0f1b3f; }
+    .igr-card p{ margin:0; color: rgba(15,27,63,.75); line-height:1.5; }
+
+    @media (max-width: 900px){
+      .igr-showcase__grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Reveal baseline (JS toggles) */
+    .igr-reveal{
+      opacity: 0;
+      transform: translateY(18px) scale(.99);
+      transition: opacity .7s cubic-bezier(.18,.9,.18,1), transform .7s cubic-bezier(.18,.9,.18,1);
+      will-change: transform, opacity;
+    }
+    .igr-reveal.is-in{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Accordion */
+    .igr-faq{
+      padding: 1.1rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(18,41,117,.14);
+      box-shadow: 0 18px 46px rgba(0,0,0,.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .igr-faq__h3{ margin:0 0 .8rem; color:#0f1b3f; }
+
+    .igr-acc{
+      border-radius: 16px;
+      border: 1px solid rgba(18,41,117,.12);
+      background: rgba(255,255,255,.72);
+      overflow:hidden;
+      margin-bottom: .75rem;
+    }
+    .igr-acc__btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding: .95rem 1rem;
+      border:0;
+      background: transparent;
+      cursor:pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color:#0f1b3f;
+      text-align:left;
+    }
+    .igr-acc__icon{
+      width: 12px; height: 12px;
+      border-right: 2px solid rgba(15,27,63,.65);
+      border-bottom: 2px solid rgba(15,27,63,.65);
+      transform: rotate(45deg);
+      transition: transform .22s ease;
+      flex: 0 0 auto;
+    }
+    .igr-acc__btn[aria-expanded="true"] .igr-acc__icon{
+      transform: rotate(-135deg);
+    }
+
+    .igr-acc__panel{
+      height: 0px;
+      overflow:hidden;
+      transition: height .28s ease;
+    }
+    .igr-acc__content{
+      padding: 0 1rem 1rem;
+      color: rgba(15,27,63,.78);
+      line-height:1.55;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .igr-reveal{ transition:none !important; }
+      .igr-acc__panel{ transition:none !important; }
+      .igr-showcase__parallaxInner{ transition:none !important; }
+      .igr-progress__bar{ transition:none !important; }
+    }
+  </style>
+</section>
